@@ -16,7 +16,7 @@ console.log("------esercizio A-------");
 
 let sum = 10 + 20;
 
-console.log(sum)
+console.log(sum);
 
 /* ESERCIZIO B
   Crea una variabile chiamata "random" e assegnaci un numero casuale tra 0 e 20 (deve essere generato dinamicamente a ogni esecuzione).
@@ -36,7 +36,7 @@ let me = {
   name: "John",
   surname: "Oliveira",
   age: 26,
-}
+};
 
 console.log(me);
 
@@ -85,7 +85,7 @@ console.log("------esercizio 1-------");
 
 function dice() {
   let randomic = Math.floor(Math.random() * 6) + 1;
-  return randomic
+  return randomic;
 }
 
 console.log(dice());
@@ -94,7 +94,6 @@ console.log(dice());
   Crea una funzione chiamata "whoIsBigger" che riceve due numeri come parametri e ritorna il maggiore dei due.
 */
 console.log("------esercizio 2-------");
-
 
 function whoIsBigger(a, b) {
   if (a > b) {
@@ -107,7 +106,6 @@ function whoIsBigger(a, b) {
 console.log(whoIsBigger(5, 10));
 console.log(whoIsBigger(20, 10));
 
-
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
 
@@ -116,7 +114,7 @@ console.log(whoIsBigger(20, 10));
 console.log("------esercizio 3-------");
 
 function splitMe(stringa) {
-  return stringa.split(" ")
+  return stringa.split(" ");
 }
 
 console.log(splitMe("Coding Is Hard To Start"));
@@ -133,11 +131,10 @@ function deleteOne(str, bool) {
   } else {
     return str.slice(0, -1);
   }
-};
+}
 
 console.log(deleteOne("john", true)); // ohn
 console.log(deleteOne("john", false)); // joh
-
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
@@ -147,20 +144,54 @@ console.log(deleteOne("john", false)); // joh
 console.log("------esercizio 5-------");
 
 function onlyLetters(str) {
-  
+  return str.replace(/\d+/g, ""); // ricercato modificatori regex; /: Delimitatori della regex.
+  // \d: Carattere di escape per identificare un numero.
+  // +: Indica che il carattere numerico può essere presente una o più volte.
+  // g: Modificatore globale che indica di eseguire la ricerca e la sostituzione su tutta la stringa (non solo sulla prima occorrenza).
 }
+
+console.log(onlyLetters("i got 4 dogs and 2 cats"));
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 console.log("------esercizio 6-------");
 
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+function isThisAnEmail(mail) {
+  if (!regexEmail.test(mail)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+console.log(isThisAnEmail("john.oliver98@gmail.com")); // true
+console.log(isThisAnEmail("pippo.baudo")); // false
 
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
 console.log("------esercizio 7-------");
 
+const dayNames = [
+  "Domenica",
+  "Lunedì",
+  "Martedì",
+  "Mercoledì",
+  "Giovedì",
+  "Venerdì",
+  "Sabato",
+];
+
+function whatDayIsIt() {
+  const today = new Date();
+  const dayI = today.getDay();
+  return dayNames[dayI];
+}
+
+console.log(whatDayIsIt());
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
@@ -176,136 +207,159 @@ console.log("------esercizio 7-------");
 */
 console.log("------esercizio 8-------");
 
+function rollTheDices(number) {
+  let sum = 0;
+  let values = [];
+
+  // ciclo per leggere i numeri di dice()
+  for (let i = 0; i < number; i++) {
+    let randoNum = dice();
+
+    // spingo nell'arrey
+    values.push(randoNum);
+    sum += randoNum; 
+  }
+
+  // Ritorna un oggetto con sum e values
+  return {
+    sum: sum,
+    values: values
+  };
+}
+
+console.log(rollTheDices(3));
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
 console.log("------esercizio 9-------");
 
+function howManyDays() {
+  
+}
 
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
 console.log("------esercizio 10-------");
 
-
 // Arrays & Oggetti
 
 const movies = [
   {
-    Title: 'The Lord of the Rings: The Fellowship of the Ring',
-    Year: '2001',
-    imdbID: 'tt0120737',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Fellowship of the Ring",
+    Year: "2001",
+    imdbID: "tt0120737",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
   },
 
   {
-    Title: 'The Lord of the Rings: The Return of the King',
-    Year: '2003',
-    imdbID: 'tt0167260',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Return of the King",
+    Year: "2003",
+    imdbID: "tt0167260",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings: The Two Towers',
-    Year: '2002',
-    imdbID: 'tt0167261',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Two Towers",
+    Year: "2002",
+    imdbID: "tt0167261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of War',
-    Year: '2005',
-    imdbID: 'tt0399295',
-    Type: 'movie',
+    Title: "Lord of War",
+    Year: "2005",
+    imdbID: "tt0399295",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'Lords of Dogtown',
-    Year: '2005',
-    imdbID: 'tt0355702',
-    Type: 'movie',
+    Title: "Lords of Dogtown",
+    Year: "2005",
+    imdbID: "tt0355702",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings',
-    Year: '1978',
-    imdbID: 'tt0077869',
-    Type: 'movie',
+    Title: "The Lord of the Rings",
+    Year: "1978",
+    imdbID: "tt0077869",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1990',
-    imdbID: 'tt0100054',
-    Type: 'movie',
+    Title: "Lord of the Flies",
+    Year: "1990",
+    imdbID: "tt0100054",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lords of Salem',
-    Year: '2012',
-    imdbID: 'tt1731697',
-    Type: 'movie',
+    Title: "The Lords of Salem",
+    Year: "2012",
+    imdbID: "tt1731697",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Greystoke: The Legend of Tarzan, Lord of the Apes',
-    Year: '1984',
-    imdbID: 'tt0087365',
-    Type: 'movie',
+    Title: "Greystoke: The Legend of Tarzan, Lord of the Apes",
+    Year: "1984",
+    imdbID: "tt0087365",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1963',
-    imdbID: 'tt0057261',
-    Type: 'movie',
+    Title: "Lord of the Flies",
+    Year: "1963",
+    imdbID: "tt0057261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg",
   },
   {
-    Title: 'The Avengers',
-    Year: '2012',
-    imdbID: 'tt0848228',
-    Type: 'movie',
+    Title: "The Avengers",
+    Year: "2012",
+    imdbID: "tt0848228",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Infinity War',
-    Year: '2018',
-    imdbID: 'tt4154756',
-    Type: 'movie',
+    Title: "Avengers: Infinity War",
+    Year: "2018",
+    imdbID: "tt4154756",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Age of Ultron',
-    Year: '2015',
-    imdbID: 'tt2395427',
-    Type: 'movie',
+    Title: "Avengers: Age of Ultron",
+    Year: "2015",
+    imdbID: "tt2395427",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Endgame',
-    Year: '2019',
-    imdbID: 'tt4154796',
-    Type: 'movie',
+    Title: "Avengers: Endgame",
+    Year: "2019",
+    imdbID: "tt4154796",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
-]
+];
 
 /* ESERCIZIO 11
   Scrivi una funzione chiamata "deleteProp" che riceve un oggetto e una stringa come parametri; deve ritornare l'oggetto fornito dopo aver eliminato
@@ -313,42 +367,35 @@ const movies = [
 */
 console.log("------esercizio 11-------");
 
-
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
 console.log("------esercizio 12-------");
-
 
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
 console.log("------esercizio 13-------");
 
-
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
 console.log("------esercizio 14-------");
-
 
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
 console.log("------esercizio 15-------");
 
-
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
 console.log("------esercizio 16-------");
 
-
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
 console.log("------esercizio 17-------");
-
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
@@ -356,12 +403,10 @@ console.log("------esercizio 17-------");
 */
 console.log("------esercizio 18-------");
 
-
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
 console.log("------esercizio 19-------");
-
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
@@ -370,42 +415,35 @@ console.log("------esercizio 19-------");
 */
 console.log("------esercizio 20-------");
 
-
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
 console.log("------esercizio 21-------");
-
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 console.log("------esercizio 22-------");
 
-
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 console.log("------esercizio 23-------");
-
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 console.log("------esercizio 24-------");
 
-
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 console.log("------esercizio 25-------");
 
-
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
 console.log("------esercizio 26-------");
-
 
 // [EXTRA] JS Avanzato
 
@@ -438,5 +476,3 @@ console.log("------esercizio 26-------");
 */
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
-
-
